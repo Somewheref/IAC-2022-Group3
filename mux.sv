@@ -2,17 +2,17 @@ module mux #(
 	parameter WIDTH = 16
 )(
   // interface signals
-  input logic branch_PC [WIDTH-1:0],
-  input logic inc_PC [WIDTH-1:0],
-  input logic PCsrc,
+  input logic inputA [WIDTH-1:0],
+  input logic inputB [WIDTH-1:0],
+  input logic sel,
   output logic data_out [WIDTH-1:0],
 );
 
 always_comb begin
-    if (PCsrc) begin
-        data_out = branch_PC;
+    if (sel) begin
+        data_out = inputA;
     end else begin
-        data_out = inc_PC;
+        data_out = inputB;
     end
 end
 
