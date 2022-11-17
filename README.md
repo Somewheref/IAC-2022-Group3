@@ -8,9 +8,8 @@ Group tasks:
 - The testbench and verification of the design working via gtkWave and Vbuddy (where appropriate).
 
 ### what to do
-I deleted this to test problems with git pull and conflicts
-
-A changed was made here that was already pushed.
+put every file in the root folder in this repo (the same dir with this README)
+the vbuddy.cpp is already included in the folder
 
 ### resources
 link to online RISC-V assembler: https://riscvasm.lucasteske.dev/
