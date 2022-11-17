@@ -12,6 +12,10 @@ I deleted this to test problems with git pull and conflicts
 
 A changed was made here that was already pushed.
 
+### resources
+link to online RISC-V assembler: https://riscvasm.lucasteske.dev/
+
+
 ### task assignments
 - Stanly: PC counter
 - Daniel: Register, ALU and MUX
