@@ -11,6 +11,10 @@ Group tasks:
 put every file in the root folder in this repo (the same dir with this README)
 the vbuddy.cpp is already included in the folder
 
+### resources
+link to online RISC-V assembler: https://riscvasm.lucasteske.dev/
+
+
 ### task assignments
 - Stanly: PC counter
 - Daniel: Register, ALU and MUX
