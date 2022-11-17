@@ -1,5 +1,5 @@
 module PC_top #(
-	parameter WIDTH = 16,
+	parameter WIDTH = 32,
     parameter INC = 3'b100
 )(
   // interface signals

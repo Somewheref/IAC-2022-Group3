@@ -1,5 +1,5 @@
 module adder #(
-	parameter INPUT_WIDTH = 16
+	parameter INPUT_WIDTH = 32
 )(
     // interface signals
     input logic [INPUT_WIDTH-1:0] a,

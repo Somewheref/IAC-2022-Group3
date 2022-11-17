@@ -1,5 +1,5 @@
 module mux #(
-	parameter WIDTH = 16
+	parameter WIDTH = 32
 )(
   // interface signals
   input logic inputA [WIDTH-1:0],

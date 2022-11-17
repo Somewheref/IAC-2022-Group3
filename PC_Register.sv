@@ -1,6 +1,6 @@
 module PC_Reg #(
-	parameter WIDTH_IN = 16
-    parameter WIDTH_OUT = 16
+	parameter WIDTH_IN = 32
+    parameter WIDTH_OUT = 32
 )(
     input wire clk,
     input wire rst,
