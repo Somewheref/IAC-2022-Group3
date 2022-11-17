@@ -1,15 +1,15 @@
 module PC #(
-	parameter WIDTH = 16
+	parameter OUTPUT_WIDTH = 16
 )(
   // interface signals
   input  logic             clk,      // clock 
   input  logic             rst,      // reset
   input  logic             en,       // enable signal
-  input  logic [WIDTH-1:0] N,     	 // clock divided by N+1
+  input  logic [OUTPUT_WIDTH-1:0] N,     	 // clock divided by N+1
   output logic  		       tick      // tick output
 );
 
-logic [WIDTH-1:0] count;
+logic [OUTPUTWIDTH-1:0] count;
 
 always_ff @ (posedge clk)
     if (rst) begin
