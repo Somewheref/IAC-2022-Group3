@@ -2,10 +2,10 @@ module mux #(
 	parameter WIDTH = 32
 )(
   // interface signals
-  input logic inputA [WIDTH-1:0],
-  input logic inputB [WIDTH-1:0],
+  input logic [WIDTH-1:0] inputA,
+  input logic [WIDTH-1:0] inputB,
   input logic sel,
-  output logic data_out [WIDTH-1:0],
+  output logic [WIDTH-1:0] data_out
 );
 
 always_comb begin

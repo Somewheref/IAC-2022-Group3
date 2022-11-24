@@ -6,8 +6,6 @@
 #include "VPC_top.h"
 
 #define MAX_SIM_CYC 100
-#define Vtop "VPC_top"
-#define TRACEFILE "PC_tb.vcd"
 
 int main(int argc, char **argv, char **env) {
   int simcyc;     // simulation clock count
@@ -15,18 +13,19 @@ int main(int argc, char **argv, char **env) {
 
   Verilated::commandArgs(argc, argv);
   // init top verilog instance
-  Vtop * top = new Vtop;
+  VPC_top* top = new VPC_top;
   // init trace dump
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
-  tfp->open (TRACEFILE);
+  tfp->open ("PC_tb.vcd");
 
   // initialize simulation inputs
   top->clk = 1;
   top->rst = 1;
   top->PCsrc = 0;
   top->ImmOp = 0;
+  top->PC = 0;
   
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -37,6 +36,11 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
     }
 
+    top->rst = 0;
+
+    if (simcyc == 12) {
+      top->rst = 1;
+    }
     if (Verilated::gotFinish())  exit(0);
   }
 
