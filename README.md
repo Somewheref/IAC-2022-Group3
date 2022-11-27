@@ -16,6 +16,7 @@ link to online RISC-V assembler: https://riscvasm.lucasteske.dev/
 
 
 ### task assignments
-- Stanly: PC counter
+- Stanly: PC counter (tested and finished)
 - Daniel: Register, ALU and MUX
 - Gary: CU, Sign-extension Unit and instruction memory
+- Martin: Testbench :)
