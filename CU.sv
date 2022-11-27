@@ -17,6 +17,7 @@ module CU (
 
 logic Branch;
 logic [1:0] ALUOp;
+logic op5;
 
 
 Main_Deco Main_Deco (
@@ -32,7 +33,7 @@ Main_Deco Main_Deco (
 );
 
 ALU_Deco ALU_Deco (
-    .op(op),
+    .op5(op5),
     .funct3(funct3),
     .funct7_5(funct7_5),
     .ALUOp(ALUOp),
@@ -42,6 +43,7 @@ ALU_Deco ALU_Deco (
 
 always_comb begin
     PCSrc = Branch & zero;
+    op5 = op[5];
 end
 
 endmodule
