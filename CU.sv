@@ -13,7 +13,11 @@ module CU (
     output logic        RegWrite
 
 
-)
+);
+
+logic Branch;
+logic [1:0] ALUOp;
+
 
 Main_Deco Main_Deco (
     .op(op),

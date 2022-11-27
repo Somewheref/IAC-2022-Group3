@@ -2,10 +2,10 @@ module ALU_Deco(
     input logic [6:0]   op,
     input logic [2:0]   funct3,
     input logic         funct7_5,
-    input logic [1:0]   ALUOp
+    input logic [1:0]   ALUOp,
 
     output logic [2:0]  ALUControl
-)
+);
 
 always_comb
     case (ALUOp)
@@ -14,7 +14,7 @@ always_comb
         2'b10: 
             case(funct3)
                 3'b000: 
-                    if op[5] & funct7_5 == 1'b1
+                    if (op[5] & funct7_5 == 1'b1)
                         ALUControl = 3'b001;
                     else
                         ALUControl = 3'b000;
@@ -24,6 +24,7 @@ always_comb
                 3'b111: ALUControl = 3'b010;
                 default: ALUControl = 3'b000;
             endcase
+            
         default: ALUControl = 3'b000;
     endcase
         

@@ -6,11 +6,11 @@ module Main_Deco (
     output logic        MemWrite,
     output logic        ALUSrc,
     output logic [1:0]  ImmSrc,
-    output logic        RegWrite
+    output logic        RegWrite,
     output logic [1:0]  ALUOp
 
 
-)
+);
 
 always_comb
     case (op)
