@@ -2,16 +2,13 @@ module RISKV_top #(
     parameter   ADDRESS_WIDTH = 32,
     parameter   DATA_WIDTH = 32
 )(
-    input  logic        clk,// RegWrite, // ALUsrc, //How do I implement ALUctrl? on this top-level or in a separate sv module?
-  //  input  logic [2:0]  ALUctrl,
+    input  logic        clk,
     input  logic [4:0]  rs1, rs2, rd,
     output logic [31:0] a0, 
     output logic        EQ,
    
    
-   // input logic PCsrc,
    
-    input logic     [ADDRESS_WIDTH-1:0] ImmOp, //dont need seperate ImmOp for PC and ALU as they are both inputs
     output logic    [ADDRESS_WIDTH-1:0] PC,
 
 
@@ -21,15 +18,20 @@ module RISKV_top #(
     input logic         funct7_5,
     input logic         zero,
 
-  //  output logic        PCSrc,
     output logic        ResultSrc,
     output logic        MemWrite,
-  //  output logic [2:0]  ALUControl,
-   // output logic        ALUSrc,
-    output logic [1:0]  ImmSrc,
-   // output logic        RegWrite,
+  
+ 
 
-    logic ALUsrc, ALUctrl, PCsrc, RegWrite
+    //ROM I/O
+    input logic [ADDRESS_WIDTH-1:0] addr,
+    output logic [DATA_WIDTH-1:0] instr,
+
+    //SignEx I/O
+    input logic [ADDRESS_WIDTH-1:0] instr_imm,
+
+
+    logic ALUsrc, ALUctrl, PCsrc, RegWrite, [ADDRESS_WIDTH-1:0] ImmOp, [1:0] Immsrc
 
 );
 
@@ -65,6 +67,17 @@ CU CU(
     .ImmSrc(ImmSrc),
     .RegWrite(RegWrite)
 
+);
+
+InstrROM InstrROM(
+    .addr(addr),
+    .instr(instr)
+);
+
+SignEx SignEx(
+    .instr_imm(instr_imm),
+    .ImmSrc(ImmSrc),
+    .ImmOp(ImmOp)
 );
 
 endmodule
