@@ -37,23 +37,23 @@ int main(int argc, char **argv, char **env) {
 
     //send a0 value to vbuddy
 
-    vbdHex(5, (int(top->a0) >> 32) & 0xF);
-    vbdHex(4, (int(top->a0) >> 16) & 0xF);
-    vbdHex(3, (int(top->a0) >> 8) & 0xF);
-    vbdHex(2, (int(top->a0) >> 4) & 0xF);
-    vbdHex(1, (int(top->a0) & 0xF));
-    vbdCycle(simcyc + 1);
+//    vbdHex(5, (int(top->a0) >> 32) & 0xF);
+//    vbdHex(4, (int(top->a0) >> 16) & 0xF);
+//    vbdHex(3, (int(top->a0) >> 8) & 0xF);
+//    vbdHex(2, (int(top->a0) >> 4) & 0xF);
+//    vbdHex(1, (int(top->a0) & 0xF));
+//    vbdCycle(simcyc + 1);
 
     top->rst = 0;
 
     if (simcyc == 12) {
       top->rst = 1;
     }
-    if ((Verilated::gotFinish())   || (vbdGetkey() == 'q')) 
+    if (Verilated::gotFinish())  // || (vbdGetkey() == 'q')) 
             exit(0);
   }
 
-  vbdClose();
+//  vbdClose();
   tfp->close(); 
   exit(0);
 }
