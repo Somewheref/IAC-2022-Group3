@@ -5,13 +5,10 @@ module CU (
     input logic         zero,
 
     output logic        PCSrc,
-    output logic        ResultSrc,
-    output logic        MemWrite,
     output logic [2:0]  ALUControl,
     output logic        ALUSrc,
     output logic [1:0]  ImmSrc,
     output logic        RegWrite
-
 
 );
 
@@ -21,11 +18,11 @@ logic op5;
 
 
 Main_Deco Main_Deco (
+    // Inputs
     .op(op),
 
+    // Outputs
     .Branch(Branch),
-    .ResultSrc(ResultSrc),
-    .MemWrite(MemWrite),
     .ALUSrc(ALUSrc),
     .ImmSrc(ImmSrc),
     .RegWrite(RegWrite),
@@ -33,11 +30,13 @@ Main_Deco Main_Deco (
 );
 
 ALU_Deco ALU_Deco (
+    // Inputs
     .op5(op5),
     .funct3(funct3),
     .funct7_5(funct7_5),
     .ALUOp(ALUOp),
 
+    // Outputs
     .ALUControl(ALUControl)
 );
 
