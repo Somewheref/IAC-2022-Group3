@@ -1,11 +1,12 @@
-// Created by Stanly
-// a test bench for PC module, not a real test bench for our CPU
+// Created by Martin
+// a test bench for whole block diagram
 
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "VPC_top.h"
+#include "VRISCV_top.h"
+#include "vbuddy.cpp"
 
-#define MAX_SIM_CYC 100
+#define MAX_SIM_CYC 10000
 
 int main(int argc, char **argv, char **env) {
   int simcyc;     // simulation clock count
@@ -13,19 +14,17 @@ int main(int argc, char **argv, char **env) {
 
   Verilated::commandArgs(argc, argv);
   // init top verilog instance
-  VPC_top* top = new VPC_top;
+  VRISCV_top* top = new VRISCV_top;
   // init trace dump
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
-  tfp->open ("PC_tb.vcd");
+  tfp->open ("RISCVTestbench.vcd");
 
-  // initialize simulation inputs
+  // initialize simulation inputs 
   top->clk = 1;
   top->rst = 1;
-  top->PCsrc = 0;
-  top->ImmOp = 0;
-  top->PC = 0;
+ 
   
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -36,14 +35,29 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
     }
 
+    //send a0 value to vbuddy
+
+    vbdHex(5, (int(top->a0) >> 32) & 0xF);
+    vbdHex(4, (int(top->a0) >> 16) & 0xF);
+    vbdHex(3, (int(top->a0) >> 8) & 0xF);
+    vbdHex(2, (int(top->a0) >> 4) & 0xF);
+    vbdHex(1, (int(top->a0) & 0xF));
+    vbdCycle(simcyc + 1);
+
     top->rst = 0;
 
     if (simcyc == 12) {
       top->rst = 1;
     }
-    if (Verilated::gotFinish())  exit(0);
+    if ((Verilated::gotFinish())   || (vbdGetkey() == 'q')) 
+            exit(0);
   }
 
+  vbdClose();
   tfp->close(); 
   exit(0);
 }
+
+
+
+
