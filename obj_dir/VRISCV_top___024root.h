@@ -16,6 +16,7 @@ class VRISCV_top___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     CData/*0:0*/ RISCV_top__DOT__ALUSrc;
+    CData/*0:0*/ RISCV_top__DOT__PCsrc;
     CData/*0:0*/ RISCV_top__DOT__RegWrite;
     CData/*1:0*/ RISCV_top__DOT__ImmSrc;
     CData/*2:0*/ RISCV_top__DOT__ALUCtrl;

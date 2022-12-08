@@ -130,10 +130,18 @@ VL_ATTR_COLD void VRISCV_top___024root___settle__TOP__0(VRISCV_top___024root* vl
             : vlSelf->RISCV_top__DOT__reg_alu_top__DOT__reg1__DOT__registers
            [(0x1fU & (vlSelf->RISCV_top__DOT__instr 
                       >> 0x14U))]);
-    vlSelf->RISCV_top__DOT__PC_top__DOT__nextPC = (
-                                                   ((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
-                                                    & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
-                                                       == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2))
+    if ((0U == (7U & (vlSelf->RISCV_top__DOT__instr 
+                      >> 0xcU)))) {
+        vlSelf->RISCV_top__DOT__PCsrc = ((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
+                                         & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
+                                            == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2));
+    } else if ((1U == (7U & (vlSelf->RISCV_top__DOT__instr 
+                             >> 0xcU)))) {
+        vlSelf->RISCV_top__DOT__PCsrc = ((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
+                                         & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
+                                            != vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2));
+    }
+    vlSelf->RISCV_top__DOT__PC_top__DOT__nextPC = ((IData)(vlSelf->RISCV_top__DOT__PCsrc)
                                                     ? 
                                                    (vlSelf->RISCV_top__DOT__PC 
                                                     + vlSelf->RISCV_top__DOT__ImmOp)
@@ -179,6 +187,7 @@ VL_ATTR_COLD void VRISCV_top___024root___ctor_var_reset(VRISCV_top___024root* vl
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->a0 = VL_RAND_RESET_I(32);
     vlSelf->RISCV_top__DOT__ALUSrc = VL_RAND_RESET_I(1);
+    vlSelf->RISCV_top__DOT__PCsrc = VL_RAND_RESET_I(1);
     vlSelf->RISCV_top__DOT__RegWrite = VL_RAND_RESET_I(1);
     vlSelf->RISCV_top__DOT__ImmOp = VL_RAND_RESET_I(32);
     vlSelf->RISCV_top__DOT__PC = VL_RAND_RESET_I(32);

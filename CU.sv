@@ -41,7 +41,10 @@ ALU_Deco ALU_Deco (
 );
 
 always_comb begin
-    PCSrc = Branch & zero;
+    if (funct3 == 000)
+        PCSrc = Branch && zero;
+    else if (funct3 == 001)
+        PCSrc = Branch && !zero;
     op5 = op[5];
 end
 

@@ -230,9 +230,7 @@ VL_ATTR_COLD void VRISCV_top___024root__trace_full_sub_0(VRISCV_top___024root* v
     bufp->fullIData(oldp+34,(vlSelf->RISCV_top__DOT__reg_alu_top__DOT__reg1__DOT__registers[30]),32);
     bufp->fullIData(oldp+35,(vlSelf->RISCV_top__DOT__reg_alu_top__DOT__reg1__DOT__registers[31]),32);
     bufp->fullBit(oldp+36,(vlSelf->RISCV_top__DOT__ALUSrc));
-    bufp->fullBit(oldp+37,(((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
-                            & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
-                               == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2))));
+    bufp->fullBit(oldp+37,(vlSelf->RISCV_top__DOT__PCsrc));
     bufp->fullBit(oldp+38,(vlSelf->RISCV_top__DOT__RegWrite));
     bufp->fullCData(oldp+39,((0x1fU & (vlSelf->RISCV_top__DOT__instr 
                                        >> 0xfU))),5);
@@ -277,9 +275,7 @@ VL_ATTR_COLD void VRISCV_top___024root__trace_full_sub_0(VRISCV_top___024root* v
     bufp->fullIData(oldp+60,(vlSelf->a0),32);
     bufp->fullIData(oldp+61,((vlSelf->RISCV_top__DOT__PC 
                               + vlSelf->RISCV_top__DOT__ImmOp)),32);
-    bufp->fullIData(oldp+62,((((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
-                               & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
-                                  == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2))
+    bufp->fullIData(oldp+62,(((IData)(vlSelf->RISCV_top__DOT__PCsrc)
                                ? (vlSelf->RISCV_top__DOT__PC 
                                   + vlSelf->RISCV_top__DOT__ImmOp)
                                : ((IData)(4U) + vlSelf->RISCV_top__DOT__PC))),32);

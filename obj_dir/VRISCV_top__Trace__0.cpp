@@ -65,9 +65,7 @@ void VRISCV_top___024root__trace_chg_sub_0(VRISCV_top___024root* vlSelf, Verilat
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[3U])) {
         bufp->chgBit(oldp+35,(vlSelf->RISCV_top__DOT__ALUSrc));
-        bufp->chgBit(oldp+36,(((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
-                               & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
-                                  == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2))));
+        bufp->chgBit(oldp+36,(vlSelf->RISCV_top__DOT__PCsrc));
         bufp->chgBit(oldp+37,(vlSelf->RISCV_top__DOT__RegWrite));
         bufp->chgCData(oldp+38,((0x1fU & (vlSelf->RISCV_top__DOT__instr 
                                           >> 0xfU))),5);
@@ -113,9 +111,7 @@ void VRISCV_top___024root__trace_chg_sub_0(VRISCV_top___024root* vlSelf, Verilat
     bufp->chgIData(oldp+59,(vlSelf->a0),32);
     bufp->chgIData(oldp+60,((vlSelf->RISCV_top__DOT__PC 
                              + vlSelf->RISCV_top__DOT__ImmOp)),32);
-    bufp->chgIData(oldp+61,((((IData)(vlSelf->RISCV_top__DOT__CU__DOT__Branch) 
-                              & (vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop1 
-                                 == vlSelf->RISCV_top__DOT__reg_alu_top__DOT__ALUop2))
+    bufp->chgIData(oldp+61,(((IData)(vlSelf->RISCV_top__DOT__PCsrc)
                               ? (vlSelf->RISCV_top__DOT__PC 
                                  + vlSelf->RISCV_top__DOT__ImmOp)
                               : ((IData)(4U) + vlSelf->RISCV_top__DOT__PC))),32);
