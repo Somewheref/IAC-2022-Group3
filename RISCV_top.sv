@@ -34,15 +34,15 @@ module RISCV_top #(
      
     logic [DATA_WIDTH-1:0] instr;
     always_comb begin           //define wire and block input values
-        assign addr = PC;
-        assign rs1 =  instr[19:15];
-        assign rs2 =  instr[24:20];
-        assign rd =  instr[11:7];
-        assign  instr_imm =  instr[31:7];
-        assign op = instr[6:0];
-        assign funct3 = instr[14:12];
-        assign zero = EQ;
-        assign funct7_5 = instr[30];
+         addr = PC;
+         rs1 =  instr[19:15];
+         rs2 =  instr[24:20];
+         rd =  instr[11:7];
+          instr_imm =  instr[31:7];
+         op = instr[6:0];
+         funct3 = instr[14:12];
+         zero = EQ;
+         funct7_5 = instr[30];
 
     end
 
@@ -88,7 +88,7 @@ CU CU(
 
 InstrROM InstrROM(
     //input
-    .addr(addr),
+    .F_addr(addr),
     //output
     .instr(instr)
 );

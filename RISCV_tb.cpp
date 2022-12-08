@@ -19,7 +19,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
-  tfp->open ("RISCVTestbench.vcd");
+  tfp->open ("RISCV_top.vcd");
 
   // initialize simulation inputs 
   top->clk = 1;
