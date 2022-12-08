@@ -7,5 +7,4 @@ RISCV_tb.o: ../RISCV_tb.cpp \
  /usr/local/share/verilator/include/verilated_vcd_c.h \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilated_trace.h \
- /usr/local/share/verilator/include/verilated_trace_defs.h VRISCV_top.h \
- ../vbuddy.cpp
+ /usr/local/share/verilator/include/verilated_trace_defs.h VRISCV_top.h

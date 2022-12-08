@@ -4,7 +4,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "VRISCV_top.h"
-#include "vbuddy.cpp"
 
 #define MAX_SIM_CYC 10000
 
