@@ -18,7 +18,7 @@ always_comb
                 ALUSrc = 1'b1;
                 ImmSrc = 2'b00;
                 RegWrite = 1'b1;
-                ALUOp = 2'b00;
+                ALUOp = 2'b10;
             end
             
         7'b1100011: //branch
